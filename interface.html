@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gestion des Produits</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestion des Produits</h1>
+            
+    <div class="search-container">
+        <input type="text" id="searchBar" placeholder="Rechercher un produit par son nom" oninput="rechercherProduit()">
+    </div>
+       
+        <div id="allProducts" class="products-container">
+            <h3>Liste de tous les produits</h3>
+          
+        </div>
+
+        <div class="main-content">
+            
+            <div class="form-container form-left">
+                <div class="form-section">
+                    <h2>Ajouter un produit</h2>
+                    <form name="form1">
+                        <div class="form-group">
+                            <label for="nom">Nom:</label>
+                            <input type="text" name="nom" id="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <input type="text" name="description" id="description" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantite">Quantité:</label>
+                            <input type="number" name="quantite" id="quantite" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="prix">Prix:</label>
+                            <input type="number" name="prix" id="prix" required>
+                        </div>
+                        <div class="form-group ">
+                            <label for="categorie">Catégorie:</label>
+                            <select name="categorie" id="categorie">
+                                <option value="Informatique" selected>Informatique</option>
+                                <option value="Accessoires">Accessoires</option>
+                            </select>
+                        </div>
+                        <button type="button" onclick="ajouter(nom.value, description.value, quantite.value, prix.value, categorie.value)">Ajouter</button>
+                    </form>
+                </div>
+            </div>
+
+            
+            <div class="form-container form-right">
+                <div class="form-section">
+                    <h2>Modifier un produit</h2>
+                    <label for="produitsCombo">Sélectionnez un produit :</label>
+                    <select id="produitsCombo" onchange="afficherDetailsProduit()">
+                    </select>
+
+                    <h3>Informations sur le produit</h3>
+                    <div id="detailsProduit">
+                        <p><strong>ID :</strong> <span id="produitId"></span></p>
+                        <p><strong>Nom :</strong> <span id="produitNom"></span></p>
+                        <p><strong>Description :</strong> <span id="produitDescription"></span></p>
+                        <p><strong>Quantité :</strong> <span id="produitQuantite"></span></p>
+                        <p><strong>Prix :</strong> <span id="produitPrix"></span></p>
+                        <p><strong>Catégorie :</strong> <span id="produitCategorie"></span></p>
+                    </div>
+                    <hr>
+                    <form name="form2">
+                        <div class="form-group">
+                            <label for="idMod">ID:</label>
+                            <input type="text" name="idMod" id="idMod" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nomMod">Nom:</label>
+                            <input type="text" name="nomMod" id="nomMod" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="descriptionMod">Description:</label>
+                            <input type="text" name="descriptionMod" id="descriptionMod" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantiteMod">Quantité:</label>
+                            <input type="number" name="quantiteMod" id="quantiteMod" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="prixMod">Prix:</label>
+                            <input type="number" name="prixMod" id="prixMod" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="categorieMod">Catégorie:</label>
+                            <select name="categorieMod" id="categorieMod">
+                                <option value="Informatique" selected>Informatique</option>
+                                <option value="Accessoires">Accessoires</option>
+                            </select>
+                        </div>
+                        <button type="button" onclick="modifier(idMod.value, nomMod.value, descriptionMod.value, quantiteMod.value, prixMod.value, categorieMod.value)">Modifier</button>
+                    </form>
+                    <hr>
+                    <h2>Supprimer un produit</h2>
+                        <form name="form3">
+                            <div class="form-group">
+                                <label for="produitsComboDelete">Produit à supprimer:</label>
+                                <select id="produitsComboDelete" onchange="afficherDetailsProduit()">
+                                    <!-- Les options seront ajoutes dynamiquement -->
+                                </select>
+                            </div>
+                            <button type="button" onclick="supprimer(document.getElementById('produitsComboDelete').value)">Supprimer</button>
+                        </form>
+                </div>
+                
+            </div>
+            
+        </div>
+
+        
+    </div>
+
+    <script src="function.js"></script>
+</body>
+</html>

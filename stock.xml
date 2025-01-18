@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stock>
+    <produit id="1">
+        <nom>Ordinateur portable</nom>
+        <description>Ordinateur portable avec 16 Go de RAM</description>
+        <quantite>50</quantite>
+        <prix>1200</prix>
+        <categorie>Informatique</categorie>
+    </produit>
+    <produit id="2">
+        <nom>Smartphone</nom>
+        <description>Smartphone avec 128 Go de stockage</description>
+        <quantite>200</quantite>
+        <prix>600</prix>
+        <categorie>Informatique</categorie>
+    </produit>
+    <produit id="3">
+        <nom>Casque audio</nom>
+        <description>Casque audio sans fil avec réduction de bruit</description>
+        <quantite>30</quantite>
+        <prix>150</prix>
+        <categorie>Accessoires</categorie>
+    </produit>
+    <produit id="4">
+        <nom>Tablette</nom>
+        <description>Tablette avec écran 10 pouces</description>
+        <quantite>75</quantite>
+        <prix>350</prix>
+        <categorie>Informatique</categorie>
+    </produit>
+</stock>
