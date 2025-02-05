@@ -1,4 +1,4 @@
-/* Global styles */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
@@ -36,7 +36,7 @@ h1 {
     background-color: #fff;
     border: 1px solid #ddd;
     padding: 20px;
-    width: 23%; /* 4 produits par ligne */
+    width: 23%; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     margin-bottom: 20px;
@@ -54,7 +54,7 @@ h1 {
     color: #007bff;
 }
 
-/* Main content container */
+
 .main-content {
     display: flex;
     justify-content: space-between;
@@ -101,7 +101,7 @@ h1 {
 
 .form-group input,
 .form-group select {
-    width: 80%; /* Réduire la largeur des inputs et sélecteurs */
+    width: 80%; 
     padding: 12px;
     border: 1px solid #ddd;
     border-radius: 6px;
@@ -111,7 +111,7 @@ h1 {
 }
 
 .form-group select {
-    width: 50%; /* Assurer la même largeur pour le sélecteur */
+    width: 50%; 
     padding: 12px;
 }
 
@@ -142,7 +142,35 @@ button:active {
 
 
 
-/* Responsiveness for small screens */
+
+/* Style pour la barre de recherche */
+.search-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#searchBar {
+    width: 25%; 
+    padding: 12px;
+    font-size: 1rem; 
+    border: 1px solid #ddd; 
+    border-radius: 6px; 
+    background-color: #fafafa; 
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+#searchBar:focus {
+    border-color: #007bff; 
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+    outline: none; 
+}
+
+@media screen and (max-width: 768px) {
+    #searchBar {
+        width: 100%; 
+    }
+}
+
 @media screen and (max-width: 768px) {
     .main-content {
         flex-direction: column;
@@ -162,33 +190,6 @@ button:active {
     }
 
     .product-box {
-        width: 48%; /* Ajuste la taille des produits pour les petits écrans */
-    }
-}
-/* Style pour la barre de recherche */
-.search-container {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-#searchBar {
-    width: 25%; /* Largeur de la barre de recherche */
-    padding: 12px; /* Espacement interne */
-    font-size: 1rem; /* Taille du texte */
-    border: 1px solid #ddd; /* Bordure par défaut */
-    border-radius: 6px; /* Coins arrondis */
-    background-color: #fafafa; /* Couleur de fond */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transition pour les interactions */
-}
-
-#searchBar:focus {
-    border-color: #007bff; /* Couleur de la bordure lorsqu'elle est focalisée */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Ombre légère pour indiquer le focus */
-    outline: none; /* Supprime l'effet par défaut */
-}
-
-@media screen and (max-width: 768px) {
-    #searchBar {
-        width: 100%; /* Adapte la largeur pour les petits écrans */
+        width: 48%; 
     }
 }

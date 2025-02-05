@@ -2,10 +2,16 @@
     <xsl:template match="/">
         <html>
             <head>
-                <title>Gestion des Étudiants</title>
+                <title>Gestion de Stock</title>
+                <style>
+                    table { width: 80%; margin: auto; border-collapse: collapse; border: 1px solid black; }
+                    th, td { padding: 10px; border: 1px solid black; text-align: center; }
+                    th { background-color: #007bff; color: white; }
+                    
+                </style>
             </head>
             <body>
-                <h1>Liste des produits</h1>
+                <h1 style="text-align: center; color: #007bff">Liste des produits</h1>
                 <table border="1">
                     <tr>
                         <th>ID</th>

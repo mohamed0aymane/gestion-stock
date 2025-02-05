@@ -9,7 +9,7 @@
         <h1>Gestion des Produits</h1>
             
     <div class="search-container">
-        <input type="text" id="searchBar" placeholder="Rechercher un produit par son nom" oninput="rechercherProduit()">
+        <input type="text" id="searchBar" placeholder="Rechercher un produit par categorie" oninput="rechercherProduit()">
     </div>
        
         <div id="allProducts" class="products-container">
@@ -32,7 +32,7 @@
                             <input type="text" name="description" id="description" required>
                         </div>
                         <div class="form-group">
-                            <label for="quantite">Quantité:</label>
+                            <label for="quantite">Quantite:</label>
                             <input type="number" name="quantite" id="quantite" required>
                         </div>
                         <div class="form-group">
@@ -40,14 +40,29 @@
                             <input type="number" name="prix" id="prix" required>
                         </div>
                         <div class="form-group ">
-                            <label for="categorie">Catégorie:</label>
+                            <label for="categorie">Categorie:</label>
                             <select name="categorie" id="categorie">
                                 <option value="Informatique" selected>Informatique</option>
                                 <option value="Accessoires">Accessoires</option>
+                                <option value="Education">Education</option>
+                                <option value="Graphisme">Graphisme</option>
+                                <option value="Sante">Sante</option>
+                                <option value="Multimedia">Multimedia</option>
                             </select>
                         </div>
                         <button type="button" onclick="ajouter(nom.value, description.value, quantite.value, prix.value, categorie.value)">Ajouter</button>
                     </form>
+                    <hr>
+                    <h2>Supprimer un produit</h2>
+                        <form name="form3">
+                            <div class="form-group">
+                                <label for="produitsComboDelete">Produit a supprimer:</label>
+                                <select id="produitsComboDelete" onchange="afficherDetailsProduit()">
+                                    <!-- Les options seront ajoutes dynamiquement -->
+                                </select>
+                            </div>
+                            <button type="button" onclick="supprimer(document.getElementById('produitsComboDelete').value)">Supprimer</button>
+                        </form>
                 </div>
             </div>
 
@@ -55,7 +70,7 @@
             <div class="form-container form-right">
                 <div class="form-section">
                     <h2>Modifier un produit</h2>
-                    <label for="produitsCombo">Sélectionnez un produit :</label>
+                    <label for="produitsCombo">Selectionnez un produit :</label>
                     <select id="produitsCombo" onchange="afficherDetailsProduit()">
                     </select>
 
@@ -64,15 +79,15 @@
                         <p><strong>ID :</strong> <span id="produitId"></span></p>
                         <p><strong>Nom :</strong> <span id="produitNom"></span></p>
                         <p><strong>Description :</strong> <span id="produitDescription"></span></p>
-                        <p><strong>Quantité :</strong> <span id="produitQuantite"></span></p>
+                        <p><strong>Quantite :</strong> <span id="produitQuantite"></span></p>
                         <p><strong>Prix :</strong> <span id="produitPrix"></span></p>
-                        <p><strong>Catégorie :</strong> <span id="produitCategorie"></span></p>
+                        <p><strong>Categorie :</strong> <span id="produitCategorie"></span></p>
                     </div>
                     <hr>
                     <form name="form2">
                         <div class="form-group">
                             <label for="idMod">ID:</label>
-                            <input type="text" name="idMod" id="idMod" required>
+                            <input type="text" name="idMod" id="idMod" placeholder="Identifiez le produit par leur id pour changer ses informations" required>
                         </div>
                         <div class="form-group">
                             <label for="nomMod">Nom:</label>
@@ -83,7 +98,7 @@
                             <input type="text" name="descriptionMod" id="descriptionMod" required>
                         </div>
                         <div class="form-group">
-                            <label for="quantiteMod">Quantité:</label>
+                            <label for="quantiteMod">Quantite:</label>
                             <input type="number" name="quantiteMod" id="quantiteMod" required>
                         </div>
                         <div class="form-group">
@@ -91,25 +106,19 @@
                             <input type="number" name="prixMod" id="prixMod" required>
                         </div>
                         <div class="form-group">
-                            <label for="categorieMod">Catégorie:</label>
+                            <label for="categorieMod">Categorie:</label>
                             <select name="categorieMod" id="categorieMod">
                                 <option value="Informatique" selected>Informatique</option>
                                 <option value="Accessoires">Accessoires</option>
+                                <option value="Education">Education</option>
+                                <option value="Graphisme">Graphisme</option>
+                                <option value="Sante">Sante</option>
+                                <option value="Multimedia">Multimedia</option>
                             </select>
                         </div>
                         <button type="button" onclick="modifier(idMod.value, nomMod.value, descriptionMod.value, quantiteMod.value, prixMod.value, categorieMod.value)">Modifier</button>
                     </form>
-                    <hr>
-                    <h2>Supprimer un produit</h2>
-                        <form name="form3">
-                            <div class="form-group">
-                                <label for="produitsComboDelete">Produit à supprimer:</label>
-                                <select id="produitsComboDelete" onchange="afficherDetailsProduit()">
-                                    <!-- Les options seront ajoutes dynamiquement -->
-                                </select>
-                            </div>
-                            <button type="button" onclick="supprimer(document.getElementById('produitsComboDelete').value)">Supprimer</button>
-                        </form>
+                    
                 </div>
                 
             </div>
@@ -118,7 +127,37 @@
 
         
     </div>
-
+    <h1>Liste des produits de la  superieur a '400'</h1>
+    <div style="margin-left: 15%;">
+       
+        <table  id="produitsTable" border="1" style=" width: 80%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+            <thead style="  background-color: #007bff;
+            color: white;
+            font-size: 1.1rem;">
+                <tr style=" padding: 12px 20px;
+                text-align: center;
+                border: 1px solid #ddd;">
+                    <td>id de produit</td>
+                    <td>nom</td>
+                    <td>description</td>
+                    <td>quantite</td>
+                    <td>prix</td>
+                    <td>categorie</td>
+                </tr>
+            </thead>
+            <tbody  style="  background-color: #007bff;
+            color: white;
+            font-size: 1.1rem;">
+                <!-- Les produits seront ajoutés ici via XQuery -->
+            </tbody>
+        </table>
+    </div>
     <script src="function.js"></script>
 </body>
 </html>

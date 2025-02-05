@@ -96,7 +96,7 @@ function supprimer(id) {
        
         init();
         afficher(myDoc);
-        alert(`Produit avec l'ID ${id} supprimé.`);
+        alert(`Produit avec l'ID ${id} supprime.`);
     } else {
         alert("Produit introuvable.");
     }
@@ -123,7 +123,7 @@ function afficherDetailsProduit() {
 
 // Remplir les combo-boxs avec les produits
 function remplirComboBox() {
-    // Récupérer les éléments combo box
+    
     var comboBox = document.getElementById("produitsCombo");
     var comboBoxDelete = document.getElementById("produitsComboDelete");
 
@@ -168,17 +168,16 @@ function afficherTousLesProduits() {
         productBox.innerHTML = `
             <h4>${nom} (ID: ${id})</h4>
             <p><strong>Description:</strong> ${description}</p>
-            <p><strong>Quantité:</strong> ${quantite}</p>
+            <p><strong>Quantite:</strong> ${quantite}</p>
             <p><strong>Prix:</strong> ${prix} MAD</p>
-            <p><strong>Catégorie:</strong> ${categorie}</p>
+            <p><strong>Categorie:</strong> ${categorie}</p>
         `;
 
         container.appendChild(productBox);
     }
 }
 
-
-// Fonction pour rechercher un produit par nom
+// Fonction pour rechercher un produit par catégorie
 function rechercherProduit() {
     var searchQuery = document.getElementById("searchBar").value.toLowerCase(); 
     var produits = myDoc.getElementsByTagName("produit"); 
@@ -187,40 +186,61 @@ function rechercherProduit() {
     container.innerHTML = ""; 
 
     for (var i = 0; i < produits.length; i++) {
-        var nom = produits[i].getElementsByTagName("nom")[0].textContent.toLowerCase();
+        var nom = produits[i].getElementsByTagName("nom")[0].textContent;
         var id = produits[i].getAttribute("id");
         var description = produits[i].getElementsByTagName("description")[0].textContent;
         var quantite = produits[i].getElementsByTagName("quantite")[0].textContent;
         var prix = produits[i].getElementsByTagName("prix")[0].textContent;
-        var categorie = produits[i].getElementsByTagName("categorie")[0].textContent;
+        var categorie = produits[i].getElementsByTagName("categorie")[0].textContent.toLowerCase(); // Convertir en minuscule pour éviter la casse
 
-        // Si le nom du produit correspond à la recherche, l'afficher
-        if (nom.includes(searchQuery)) {
+        // Verifier si la categorie contient la requête de recherche
+        if (categorie.includes(searchQuery)) {
             var productBox = document.createElement("div");
             productBox.className = "product-box";
             productBox.innerHTML = `
                 <h4>${nom} (ID: ${id})</h4>
                 <p><strong>Description:</strong> ${description}</p>
-                <p><strong>Quantité:</strong> ${quantite}</p>
+                <p><strong>Quantite:</strong> ${quantite}</p>
                 <p><strong>Prix:</strong> ${prix} MAD</p>
-                <p><strong>Catégorie:</strong> ${categorie}</p>
+                <p><strong>Categorie:</strong> ${categorie}</p>
             `;
             container.appendChild(productBox); // Ajouter la boîte au conteneur
         }
     }
 
-    // Si aucune correspondance, afficher un message
     if (container.innerHTML === "") {
-        container.innerHTML = "<p>Aucun produit trouvé.</p>";
+        container.innerHTML = "<p>Aucun produit trouvé dans cette catégorie.</p>";
     }
+}
+// Effectuer la requête XQuery et remplir la table
+function loadProduits() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "interface.php", true); 
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            // Remplir la table avec les résultats de la requête
+            document.querySelector("#produitsTable tbody").innerHTML = this.responseText;
+        } else if (this.readyState === 4) {
+            console.error("Erreur lors de la requête PHP", this.status, this.statusText);
+        }
+    };
+    xhttp.send();
 }
 
+
 function init() {
-    remplirComboBox(); 
-    afficherTousLesProduits();// Remplir la liste des produits
+    remplirComboBox();
+    // Remplir la liste des produits 
+    afficherTousLesProduits();
     if (myDoc.getElementsByTagName("produit").length > 0) {
-        document.getElementById("produitsCombo").selectedIndex = 0; // Sélectionner le premier produit
-        afficherDetailsProduit(); // Afficher ses détails
+        // Sélectionner le premier produit
+        document.getElementById("produitsCombo").selectedIndex = 0; 
+        // Afficher ses détails
+        afficherDetailsProduit(); 
+      
     }
+
 }
+// Charger les produits à la fin de la page
+window.onload = loadProduits;
 init();

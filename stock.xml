@@ -1,31 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<stock>
+<?xml-stylesheet type="text/xsl" href="stock.xsl"?>
+<stock xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+       xsi:noNamespaceSchemaLocation="stock.xsd">
+
     <produit id="1">
         <nom>Ordinateur portable</nom>
-        <description>Ordinateur portable avec 16 Go de RAM</description>
+        <description>Ordinateur portable performant avec 16 Go de RAM et SSD 512 Go</description>
         <quantite>50</quantite>
         <prix>1200</prix>
         <categorie>Informatique</categorie>
     </produit>
     <produit id="2">
         <nom>Smartphone</nom>
-        <description>Smartphone avec 128 Go de stockage</description>
+        <description>Smartphone avec 128 Go de stockage et ecran AMOLED</description>
         <quantite>200</quantite>
-        <prix>600</prix>
+        <prix>650</prix>
         <categorie>Informatique</categorie>
     </produit>
     <produit id="3">
         <nom>Casque audio</nom>
-        <description>Casque audio sans fil avec réduction de bruit</description>
+        <description>Casque Bluetooth avec reduction de bruit active</description>
         <quantite>30</quantite>
-        <prix>150</prix>
+        <prix>180</prix>
         <categorie>Accessoires</categorie>
     </produit>
     <produit id="4">
-        <nom>Tablette</nom>
-        <description>Tablette avec écran 10 pouces</description>
-        <quantite>75</quantite>
-        <prix>350</prix>
+        <nom>Tablette Pro</nom>
+        <description>Tablette performante avec ecran 12 pouces et stylet inclus</description>
+        <quantite>40</quantite>
+        <prix>500</prix>
         <categorie>Informatique</categorie>
+    </produit>
+    <produit id="5">
+        <nom>Tablette Lite</nom>
+        <description>Tablette legere avec ecran 10 pouces et 4 Go de RAM</description>
+        <quantite>75</quantite>
+        <prix>250</prix>
+        <categorie>Informatique</categorie>
+    </produit>
+    <produit id="6">
+        <nom>Tablette Gamer</nom>
+        <description>Tablette gaming avec processeur puissant et ecran 120Hz</description>
+        <quantite>30</quantite>
+        <prix>900</prix>
+        <categorie>Informatique</categorie>
+    </produit>
+    <produit id="7">
+        <nom>Tablette educative</nom>
+        <description>Tablette pour enfants avec applications educatives preinstallees</description>
+        <quantite>80</quantite>
+        <prix>150</prix>
+        <categorie>Education</categorie>
+    </produit>
+    <produit id="8">
+        <nom>Tablette Graphique</nom>
+        <description>Tablette avec ecran tactile et support pour logiciels de dessin</description>
+        <quantite>50</quantite>
+        <prix>600</prix>
+        <categorie>Graphisme</categorie>
+    </produit>
+    <produit id="9">
+        <nom>Tablette Medicale</nom>
+        <description>Tablette robuste pour usage medical avec capteurs integres</description>
+        <quantite>20</quantite>
+        <prix>1300</prix>
+        <categorie>Sante</categorie>
+    </produit>
+    <produit id="10">
+        <nom>Tablette de Bureau</nom>
+        <description>Tablette adaptee au travail en entreprise avec applications bureautiques</description>
+        <quantite>60</quantite>
+        <prix>450</prix>
+        <categorie>Informatique</categorie>
+    </produit>
+    <produit id="11">
+        <nom>Tablette Etanche</nom>
+        <description>Tablette resistante a l'eau et a la poussiere, ideale pour l'exterieur</description>
+        <quantite>25</quantite>
+        <prix>700</prix>
+        <categorie>Informatique</categorie>
+    </produit>
+    <produit id="12">
+        <nom>Tablette 5G</nom>
+        <description>Tablette compatible 5G avec autonomie longue duree</description>
+        <quantite>40</quantite>
+        <prix>800</prix>
+        <categorie>Informatique</categorie>
+    </produit>
+    <produit id="13">
+        <nom>Tablette Video</nom>
+        <description>Tablette ideale pour le streaming avec ecran OLED 4K</description>
+        <quantite>45</quantite>
+        <prix>1000</prix>
+        <categorie>Multimedia</categorie>
+    </produit>
+    <produit id="14">
+        <nom>Tablette Convertible</nom>
+        <description>Tablette hybride avec clavier detachable et Windows 11</description>
+        <quantite>35</quantite>
+        <prix>1200</prix>
+        <categorie>Informatique</categorie>
+    </produit>
+    <produit id="15">
+        <nom>Tablette Ultra-Legere</nom>
+        <description>Tablette fine et legere avec autonomie de 15 heures</description>
+        <quantite>55</quantite>
+        <prix>650</prix>
+        <categorie>Informatique</categorie>
+    </produit>
+    <produit id="16">
+        <nom>Tablette Audio</nom>
+        <description>Tablette optimisee pour la musique avec haut-parleurs stereo</description>
+        <quantite>50</quantite>
+        <prix>400</prix>
+        <categorie>Multimedia</categorie>
     </produit>
 </stock>
